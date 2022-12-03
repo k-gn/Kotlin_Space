@@ -169,13 +169,13 @@ Calendar calendar = new Calendar(); // java
   // setter 정의 전 값이 초기화하거나 getter 가 있어야한다.
   set(value) {
     // ...
-    time = value
+    field = value
   }
   
   /*
     var <propertyName> [: <propertyType>]
-    [<getter>]
-    [<setter>]
+      [<getter>]
+      [<setter>]
   */
 ```
 
