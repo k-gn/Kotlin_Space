@@ -162,15 +162,15 @@ Calendar calendar = new Calendar(); // java
 ```
   var time: String
   
-  get() {
-    return time
-  }
-  
-  // setter 정의 전 값이 초기화하거나 getter 가 있어야한다.
-  set(value) {
-    // ...
-    field = value // field - Backing Fields
-  }
+    get() {
+      return field
+    }
+
+    // setter 정의 전 값이 초기화하거나 getter 가 있어야한다.
+    set(value) {
+      // ...
+      field = value // field - Backing Fields
+    }
   
   /*
     var <propertyName> [: <propertyType>]
