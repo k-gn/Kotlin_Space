@@ -133,3 +133,53 @@ val double: (number: Int) -> Int = {
 
 ```
 
+## Null
+
+```kotlin
+
+var name: String? = null // ? - null 할당 허용 (nullable type)
+
+```
+
+---
+
+- 코틀린에서 public 자바코드를 호출할 수 있다. 
+- 자바에서 코틀린 코드를 호출할 수 있다 (public 명시 안해도됨, get 추가함수 제공)
+- 서로 인스턴스 생성하는 문법이 다르다
+
+```
+val calendar = Calendar() // kotlin
+Calendar calendar = new Calendar(); // java
+```
+
+---
+
+- Getter / Setter
+  - 코틀린 프로퍼티는 자동으로 지원한다.
+  - getter, setter 모두 직접 구현할 수도 있다.
+  - read-only 프로퍼티는 setter 정의 불가능
+
+```
+  var time: String
+  
+    get() {
+      return field
+    }
+
+    // setter 정의 전 값이 초기화하거나 getter 가 있어야한다.
+    set(value) {
+      // ...
+      field = value // field - Backing Fields
+    }
+  
+  /*
+    var <propertyName> [: <propertyType>]
+      [<getter>]
+      [<setter>]
+  */
+```
+
+
+---
+
+
