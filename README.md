@@ -169,7 +169,7 @@ Calendar calendar = new Calendar(); // java
   // setter 정의 전 값이 초기화하거나 getter 가 있어야한다.
   set(value) {
     // ...
-    field = value
+    field = value // field - Backing Fields
   }
   
   /*
