@@ -171,7 +171,14 @@ Calendar calendar = new Calendar(); // java
     // ...
     time = value
   }
+  
+  /*
+    var <propertyName> [: <propertyType>]
+    [<getter>]
+    [<setter>]
+  */
 ```
+
 
 ---
 
