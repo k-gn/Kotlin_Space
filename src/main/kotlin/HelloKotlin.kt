@@ -1,0 +1,6 @@
+class HelloKotlin {
+}
+
+fun main() {
+
+}
