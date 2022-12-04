@@ -147,7 +147,7 @@ var name: String? = null // ? - null 할당 허용 (nullable type)
 - 자바에서 코틀린 코드를 호출할 수 있다 (public 명시 안해도됨, get 추가함수 제공)
 - 서로 인스턴스 생성하는 문법이 다르다
 
-```
+```kotlin
 val calendar = Calendar() // kotlin
 Calendar calendar = new Calendar(); // java
 ```
@@ -159,7 +159,7 @@ Calendar calendar = new Calendar(); // java
   - getter, setter 모두 직접 구현할 수도 있다.
   - read-only 프로퍼티는 setter 정의 불가능
 
-```
+```kotlin
   var time: String
   
     get() {
@@ -182,4 +182,224 @@ Calendar calendar = new Calendar(); // java
 
 ---
 
+> Condition
 
+```kotlin
+
+val result = 5 > 3
+
+// if 와 when 은 서로 대체할 수 있다.
+
+if (result) {
+    // ...
+} else if(result) {
+    // ...
+} else {
+    // ...
+}
+
+when {
+    result -> {
+        // ...
+    }
+    else -> {
+        // ...
+    }
+}
+
+/*
+    프로그래밍에서 하나의 값을 반환 (값을 변수에 할당) 하는 것을 expression (식) 이라고 한다.
+    발생 가능한 모든 경우에 초기화가 진행될 경우 변수에 선언에서 초기화하지 않아도 예외가 발생하지 않는다.
+*/
+fun getNum(first: Int, second: Int): Int {
+  val num: Int = if(first > second) { // inline 도 가능
+    first
+  } else {
+    second
+  }
+  return num
+}
+
+```
+
+-- 여기서 부턴 자바
+
+if else구문을 쓸 수 있는 모든 상황에 switch문을 쓸 수 있는 건 아니지만, 그와 반대로 모든 switch 구문은 if else문으로 대체될 수 있다.
+
+switch 조건 허용값
+- char, byte, short, int, Wrapper class, String enum
+
+case 값은 switch 허용값과 타입이 동일해야한다.
+
+if 보다 switch 가 조금 더 가독성이 좋다.
+컴파일러가 최적화할때 switch가 더 유리하다. (특정 코드의 최적화를 위해선 if else문보다 switch구문을 쓰는게 더 적절하다.)
+https://devmoony.tistory.com/121
+
+자바14 부터 향상된 switch 문도 제공한다.
+(case arrow, break 제거, yield로 반환값을 변수에 할당 가능, 변수에 값을 반환하는 식으로 사용 가능)
+
+
+---
+> Loop
+
+```kotlin
+
+val names: Array<String> = arrayOf("a", "b", "c")
+for (name in names) {
+    // ...
+}
+
+val nameSize = names.size
+for (index in 0 until nameSize) { // <= index <
+    // ...
+}
+
+for (index in 0 .. nameSize) { // <= index <=
+  // ...
+}
+
+for (index in (nameSize - 1) downTo 0) { // >= index >=
+  // ...
+}
+
+for (index in (nameSize - 1) downTo 0 step 2) { // +2 씩 띄어가기
+  // ...
+}
+
+var count = 5
+
+while (count > 0) {
+    // ...
+    count -= 1
+}
+
+do {
+  // ...
+  count -= 1
+} while (count > 0)
+
+for (name in names) { 
+  // ...
+  if (name == "a") { // == 가능!
+      break // 가장 가까운 loop 종료
+  }
+}
+
+val matrix = arrayOf(
+  intArrayOf(1, 2, 3),
+  intArrayOf(4, 5, 6)
+)
+
+loop@ for (row in matrix) {
+  for (column in row) {
+    if (column == 2) break@loop // label 가능
+  }
+}
+
+```
+
+-- 여기서 부턴 자바
+
+label 을 사용해 안쪽 반복문에서 바깥 반복문을 break or continue 할 수 있다.
+단, 바깥 반복문과 연결될 정도의 Loop 라면 코드 자체를 수정하는 것도 방법이다.
+
+return 를 함수에서 사용 시 바로 함수를 빠져나간다.
+(반복문에서 사용해도 그냥 바로 나간다)
+
+---
+
+> Class
+
+```kotlin
+
+class Weather( // 클래스명과 생성자를 동시에 선언 가능
+  val temperature: Int,
+  val location: String
+)
+
+class Weather constructor( // 클래스명과 생성자를 동시에 선언 가능
+  val temperature: Int,
+  val location: String
+)
+
+class Weather constructor( // 주 생성자
+  val temperature: Int,
+  val location: String
+) {
+  // 부 생성자
+  constructor(temperature: Int, location: String) : this( // this : 주 생성자로 전달
+    temperature,
+    location
+  ) 
+}
+
+class Weather constructor( // 기본값 설정 가능 (생성자를 두개 만든 것과 동일한 효과를 낼 수 있다.)
+  val temperature: Int = 0,
+  val location: String,
+)
+
+class WeatherInfo constructor( 
+  val temperature: Int,
+  val location: String = "",
+)
+
+// 클래스 이름은 대문자 시작, 명사, 카멜케이스
+
+// 초기화와 getter 의 차이 - 사실상 거의 동일하지만, getter 는 함수라서 연산을 수행함 -> 값이 연산에 따라 달라진다. / 초기화는 값이 변할일이 없다.
+open class WeatherInfo constructor(
+  val temperature: Int,
+  val location: String = "",
+) {
+    val display = "$temperature - $location"
+
+    // custumGetter
+    val displayGetter: String
+        get() = "$temperature - $location"
+        set(value) {
+          if (value == "test value")
+            field = value
+        }
+}
+
+fun main() {
+    val weather = Weather(20, "강남구 대치동") // new 없이 생성
+}
+
+// 상속
+// 코틀린의 최상위 클래스 : Any (open 키워드가 추가되어 있다)
+// open : 상속을 허용한다는 의미
+class TemperatureInfo(
+  override val temp: Int, // 재정의
+) : WeatherInfo(temp, "") { // 부모에게 기본값을 계속 전달해야 할 경우 구조를 변경해야할 필요가 있다.
+}
+
+
+open class Shape(vertexCount: Int) {
+  init { // 클래스 생성 시 실행되는 블럭
+      // ...
+  }
+  
+  open fun draw() {
+      // ..
+  }
+}
+
+class Rectangle(vertexCount: Int) : Shape(vertexCount) {
+  init { // 클래스 생성 시 실행되는 블럭
+    // ...
+  }
+
+  override fun draw() {
+    // ..
+  }
+}
+
+```
+
+Obejct : 모든 클래스의 상위클래스 / 기본생성자를 갖고 있다.
+
+---
+### 중요!
+1. 코드 리뷰 (개선)은 중요한 개념이다.
+2. 함수의 분리를 중요하게 여기자.
+3. 함수의 재사용성을 높이자.

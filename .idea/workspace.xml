@@ -18,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -49,6 +49,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HelloKotlinKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HelloKotlinKt" />
+      <module name="onboarding.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.HelloKotlinKt" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -59,6 +71,8 @@
       <option name="presentableId" value="Default" />
       <updated>1670036020361</updated>
       <workItem from="1670036023498" duration="1370000" />
+      <workItem from="1670067424394" duration="929000" />
+      <workItem from="1670115370763" duration="7500000" />
     </task>
     <servers />
   </component>
