@@ -347,7 +347,7 @@ class WeatherInfo constructor(
 
 // 초기화와 getter 의 차이 - 사실상 거의 동일하지만, getter 는 함수라서 연산을 수행함 -> 값이 연산에 따라 달라진다. / 초기화는 값이 변할일이 없다.
 open class WeatherInfo constructor(
-  val temperature: Int,
+  open val temperature: Int,
   val location: String = "",
 ) {
     val display = "$temperature - $location"
@@ -369,7 +369,7 @@ fun main() {
 // 코틀린의 최상위 클래스 : Any (open 키워드가 추가되어 있다)
 // open : 상속을 허용한다는 의미
 class TemperatureInfo(
-  override val temp: Int, // 재정의
+  override val temperature: Int, // 재정의
 ) : WeatherInfo(temp, "") { // 부모에게 기본값을 계속 전달해야 할 경우 구조를 변경해야할 필요가 있다.
 }
 
@@ -391,12 +391,15 @@ class Rectangle(vertexCount: Int) : Shape(vertexCount) {
 
   override fun draw() {
     // ..
+    super.draw()
   }
 }
 
 ```
 
 Obejct : 모든 클래스의 상위클래스 / 기본생성자를 갖고 있다.
+
+코틀린 멀티플랫폼으로 공통적인 코드들을 모듈로 관리할 수 있다.
 
 ---
 ### 중요!

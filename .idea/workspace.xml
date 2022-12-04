@@ -37,14 +37,16 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Kotlin.ShapeKt">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -56,8 +58,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShapeKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="clazz.ShapeKt" />
+      <module name="onboarding.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.ShapeKt" />
         <item itemvalue="Kotlin.HelloKotlinKt" />
       </list>
     </recent_temporary>
@@ -72,7 +82,8 @@
       <updated>1670036020361</updated>
       <workItem from="1670036023498" duration="1370000" />
       <workItem from="1670067424394" duration="929000" />
-      <workItem from="1670115370763" duration="7500000" />
+      <workItem from="1670115370763" duration="8647000" />
+      <workItem from="1670126340591" duration="89000" />
     </task>
     <servers />
   </component>
