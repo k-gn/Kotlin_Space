@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test
 
 class JunitTest {
 
+  // beforeAll, afterAll 은 정적 (static) 메소드를 사용하거나,
+  // 테스트 생명주기를 조절 (@TestInstance(TestInstance.Lifecycle.PER_CLASS)) 해야 사용 가능하다.
   companion object {
     @BeforeAll
     @JvmStatic
