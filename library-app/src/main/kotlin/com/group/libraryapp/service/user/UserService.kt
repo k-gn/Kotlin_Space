@@ -4,7 +4,10 @@ import com.group.libraryapp.domain.user.User
 import com.group.libraryapp.domain.user.UserRepository
 import com.group.libraryapp.dto.user.request.UserCreateRequest
 import com.group.libraryapp.dto.user.request.UserUpdateRequest
+import com.group.libraryapp.dto.user.response.UserLoanHistoryResponse
 import com.group.libraryapp.dto.user.response.UserResponse
+import com.group.libraryapp.util.fail
+import com.group.libraryapp.util.findByIdOrThrow
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -27,20 +30,27 @@ class UserService(
     @Transactional(readOnly = true)
     fun getUsers(): List<UserResponse> {
         return userRepository.findAll()
-            .map { user -> UserResponse(user) }
+            .map { user -> UserResponse.of(user) }
             //.map (::UserResponse) // 메서드 참조 방법
             //.map { UserResponse(it) } // param 이 하나인 람다는 it 키워드로 간략화 가능
     }
 
     @Transactional
     fun updateUserName(request: UserUpdateRequest) {
-        val user = userRepository.findById(request.id).orElseThrow(::IllegalArgumentException)
+        val user = userRepository.findByIdOrThrow(request.id)
         user.updateName(request.name)
     }
 
     @Transactional
     fun deleteUser(name: String) {
-        val user = userRepository.findByName(name).orElseThrow(::IllegalArgumentException)
+        val user = userRepository.findByName(name) ?: fail()
         userRepository.delete(user)
+    }
+
+    @Transactional(readOnly = true)
+    fun getUserLoanHistories(): List<UserLoanHistoryResponse> {
+        return userRepository.findAll().map { user ->
+            UserLoanHistoryResponse.of(user)
+        }
     }
 }

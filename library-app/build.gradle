@@ -20,7 +20,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+
+    // 코틀린 리플렉션을 사용하도록 의존성 추가
     implementation 'org.jetbrains.kotlin:kotlin-reflect:1.6.21'
+
+    // jackson 이 코틀린을 잘 이해하도록 의존성 추가
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3'
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     implementation 'com.querydsl:querydsl-jpa:5.0.0'
