@@ -8,6 +8,7 @@ data class UserLoanHistoryResponse(
   val name: String, // 유저 이름
   val books: List<BookHistoryResponse>
 ) {
+  // 정적 팩토리 메서드를 활용해 DTO 생성 역할을 넘긴다.
   companion object {
     fun of(user: User): UserLoanHistoryResponse {
       return UserLoanHistoryResponse(
@@ -26,7 +27,7 @@ data class BookHistoryResponse(
     fun of(history: UserLoanHistory): BookHistoryResponse {
       return BookHistoryResponse(
         name = history.bookName,
-        isReturn = history.status == UserLoanStatus.RETURNED,
+        isReturn = history.isReturn,
       )
     }
   }

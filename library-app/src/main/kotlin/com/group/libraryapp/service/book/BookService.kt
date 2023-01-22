@@ -8,6 +8,7 @@ import com.group.libraryapp.domain.user.loanhistory.UserLoanStatus
 import com.group.libraryapp.dto.book.request.BookLoanRequest
 import com.group.libraryapp.dto.book.request.BookRequest
 import com.group.libraryapp.dto.book.request.BookReturnRequest
+import com.group.libraryapp.dto.book.response.BookStatResponse
 import com.group.libraryapp.util.fail
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -40,5 +41,34 @@ class BookService(
     fun returnBook(request: BookReturnRequest) {
         val user = userRepository.findByName(request.userName) ?: fail()
         user.returnBook(request.bookName)
+    }
+
+    @Transactional(readOnly = true)
+    fun countLoanedBook(): Int {
+        return userLoanHistoryRepository.countByStatus(UserLoanStatus.LOANED).toInt()
+    }
+
+    @Transactional(readOnly = true)
+    fun getBookStatistics(): List<BookStatResponse> {
+        /*
+            상황에 따라 다르겠지만 count or grouping 은
+            애플리케이션 단에서 모든 데이터를 가져와 처리하는 것 보다
+            보통 DB 에서 가져올 때 처리를 하는 방법이
+            네트워크, 애플리케이션 등의 부하를 줄일 수 있다.
+            추가로 인덱스를 이용해 튜닝할 여지도 있다.
+         */
+        return bookRepository.getStats()
+
+        /*return bookRepository.findAll() // List<Book>
+            .groupBy { book -> book.type } // Map<BookType, List<Book>>
+            .map { (type, books) -> BookStatResponse(type, books.size) } // List<BookStatResponse>*/
+
+        /*val results = mutableListOf<BookStatResponse>()
+        val books = bookRepository.findAll();
+        for (book in books) {
+            results.firstOrNull { dto -> book.type == dto.type }?.plusOne()
+                ?: results.add(BookStatResponse(book.type, 1))
+        }
+        return results;*/
     }
 }

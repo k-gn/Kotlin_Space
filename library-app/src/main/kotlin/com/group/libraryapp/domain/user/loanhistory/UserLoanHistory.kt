@@ -17,6 +17,10 @@ class UserLoanHistory(
     val id: Long? = null,
 ) {
 
+    // 생성자 밖에 있는 프로퍼티는 엔티티 컬럼으로 생성되지 않는다.
+    val isReturn: Boolean
+        get() = this.status == UserLoanStatus.RETURNED
+
     fun doReturn() {
         this.status = UserLoanStatus.RETURNED
     }
