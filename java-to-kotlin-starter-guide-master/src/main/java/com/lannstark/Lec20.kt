@@ -1,7 +1,7 @@
 package com.lannstark
 
 fun main() {
-    val person = Person("", 10)
+    val person = Person("g", 10)
     printPerson2(person)
 }
 

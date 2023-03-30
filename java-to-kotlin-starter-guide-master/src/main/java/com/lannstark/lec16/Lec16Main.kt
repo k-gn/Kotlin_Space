@@ -27,6 +27,7 @@ infix fun Int.add(other: Int): Int {
 
 // inline 키워드로 함수를 호출한 지점에 함수 본문을 그대로 복붙한다.
 // 함수를 파라미터로 전달할 때 콜 체인 오버헤드를 줄일 수 있다.
+// inline 처리는 1~3줄 정도의 길이를 권장한다.
 inline fun Int.add2(other: Int): Int {
     return this + other
 }

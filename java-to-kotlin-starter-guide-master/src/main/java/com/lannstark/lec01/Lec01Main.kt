@@ -34,7 +34,7 @@ fun main() {
 
     /*
         * 번외
-        final ArrayList 일 때 배열자체는 못바꾸지만 배열 안에 값들은 건드릴 수 있다.
+            final ArrayList 일 때 배열자체는 못바꾸지만 배열 안에 값들은 건드릴 수 있다.
         단. Arrays.asList 로 생성 시 값들을 건드릴 수 없다. (고정 크기의 List를 반환하기 때문에 예외가 발생)
      */
 

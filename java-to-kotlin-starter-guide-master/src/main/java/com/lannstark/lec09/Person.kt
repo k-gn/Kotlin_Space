@@ -14,7 +14,8 @@ fun main() {
 }
 
 // constructor 지시어 생략 가능
-class Person( // 주 생성자 (반드시 존재 - 파라미터가 하나도 없다면 생략 가능)
+class Person
+constructor( // 주 생성자 (반드시 존재 - 파라미터가 하나도 없다면 생략 가능)
     // 코틀린은 생성자에서 프로퍼티를 만들 수 있다.
     val name: String,
     var age: Int,

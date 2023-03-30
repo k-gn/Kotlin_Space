@@ -26,6 +26,7 @@ class User constructor(
     val id: Long? = null,
 ) {
 
+    // init 블럭은 주 생성자의 일부로 부 생성자보다 먼저 호출된다.
     init {
         if (name.isBlank()) {
             throw IllegalArgumentException("이름은 비어 있을 수 없습니다.")

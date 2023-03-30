@@ -25,7 +25,7 @@ open class Base(
 }
 
 class Derived(
-    override val number: Int
+    override val number: Int = 50
 ) : Base(number) {
     init {
         println("Derived")

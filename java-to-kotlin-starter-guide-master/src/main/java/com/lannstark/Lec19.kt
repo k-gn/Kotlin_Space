@@ -16,8 +16,8 @@ class Person2(
         return this.name
     }
 
-    operator fun component2(): String {
-        return this.name
+    operator fun component2(): Int {
+        return this.age
     }
 }
 
