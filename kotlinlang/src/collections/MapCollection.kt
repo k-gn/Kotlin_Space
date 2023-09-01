@@ -7,7 +7,7 @@ package collections
    변경가능(mutable) 맵의 읽기전용 뷰를 얻으려면 Map으로 캐스팅하면 됩니다.
  */
 
-const val POINTS_X_PASS: Int = 15 // const val -> static final
+const val POINTS_X_PASS: Int = 15 // const val -> static final (상수)
 val EZPassAccounts: MutableMap<Int, Int> = mutableMapOf(1 to 100, 2 to 100, 3 to 100)
 val EZPassReport: Map<Int, Int> = EZPassAccounts
 
@@ -22,9 +22,7 @@ fun updatePointsCredit(accountId: Int) {
 
 fun accountsReport() {
     println("EZ-Pass 현황:")
-    EZPassReport.forEach {
-            k, v -> println("ID $k: 포인트 $v")
-    }
+    EZPassReport.forEach { (k, v) -> println("ID $k: 포인트 $v") }
 }
 
 fun main() {
